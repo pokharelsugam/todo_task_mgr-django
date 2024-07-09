@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    {%load static %}
+    <link rel ="stylesheet" type = "text/css" href = "{% static 'css/styles.css'%}">
+</head>
+<body>
+    <div>
+    <ul>
+        <li><a href="http://127.0.0.1:8000/">Home</a></li>
+        <li><a href="/add">Add Task</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </div>
+    <h1>Add Task</h1>
+    <div>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name" class= "form_title">Task:</label><br>
+        <input type="text" name ="name" id="name"></input><br><br>
+        <label for="description" class= "form_title" >Description:</label><br>
+        <textarea type="text" name ="description" id="description"></textarea><br><br>
+        <label for="description" class= "form_title">Status:</label><br>
+        <select name ="status" id = "status">
+        <option value = "Not Started"> Not Started </option>
+        <option value = "In Progress"> In Progress </option>
+        <option value = "Completed"> Completed </option>
+        </select> <br> <br>
+        <button type="submit"> Add </button>
+      </form>
+    </div>
+</body>
+</html>

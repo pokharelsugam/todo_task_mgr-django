@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {%load static %}
+    <link rel ="stylesheet" type = "text/css" href = "{% static 'css/styles.css'%}">
+</head>
+<body>
+    <div>
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="/add">Add Task</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </div>
+    <h1>Home</h1>
+    <h2> Please <a href = "{%url 'task_add'%}"> Click Here</a> to add new task</h2>
+    <table class = "task_table_list">
+        <tr>
+            <th>ID</th>
+            <th>Task</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+        {%for task in tasks%}
+        <tr>
+            <td> {{task.id}} </td>
+            <td> {{task.name}} </td>
+            <td> {{task.description}} </td>
+            <td> {{task.status}} </td>
+            <td> <a href = "{% url 'task_edit' pk=task.id %}"><button class = "button_3d_blue">Edit</button></a> </td>
+            <td> <a href = "{% url 'task_delete' pk=task.id %}"><button class = "button_3d_red">Delete</button></a> </td>
+        </tr>
+        {% endfor%}
+    </table>    
+</body>
+</html>
